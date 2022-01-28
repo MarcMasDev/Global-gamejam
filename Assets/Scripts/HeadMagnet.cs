@@ -45,10 +45,8 @@ public class HeadMagnet : MonoBehaviour
             DistanceImpact = Vector3.Distance(other.transform.position, transform.position);
 
             DistanceImpact = Mathf.Clamp(DistanceImpact, 0, MaxDistanceImpact);
-            Vector3 camForward = GameManager.GetManager().GetCamera().transform.forward;
             //og.AddForce(m * Force * DistanceImpact, ForceMode.Impulse);
-            og.AddRelativeForce(camForward * Force * DistanceImpact, ForceMode.Impulse);
-            print(camForward * Force * DistanceImpact);
+            og.AddRelativeForce(new Vector3(og.transform.position.x, og.transform.position.y, og.transform.position.z) * Force * DistanceImpact, ForceMode.Impulse);
         }
     }
 
