@@ -8,6 +8,7 @@ public class HeadMagnet : MonoBehaviour
     public float Force;
     public float DistanceImpact;
     public float MaxDistanceImpact=4f;
+    public ActionController ActionController;
 
     private void Start()
     {
@@ -16,9 +17,17 @@ public class HeadMagnet : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(0))
+        {
             eject.Play();
+            ActionController.SetRejectTrigger();
+        }
+          
         if (Input.GetMouseButtonUp(1) && !Input.GetMouseButton(0))
+        {
+            ActionController.OffMagneticTrigger();
             eject.Stop();
+        }
+           
         
 
 
