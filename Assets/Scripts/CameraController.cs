@@ -17,7 +17,6 @@ public class CameraController : MonoBehaviour
     public float MinPitch;
     public float MaxPitch;
     public LayerMask LayerMask;
-    public float LerpCamera;
 
     public float Yaw;
 
@@ -33,13 +32,13 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.GetManager().SetCamera(this);
     }
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Attracting(false);
+        GameManager.GetManager().SetCamera(this);
     }
     private void LateUpdate()
     {
@@ -76,9 +75,6 @@ public class CameraController : MonoBehaviour
 
         transform.position = desiredPostion;
         transform.LookAt(_lookAt);
-
-        //transform.position = Vector3.Lerp(transform.position, desiredPostion, 1);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_direction), LerpCamera);
     }
 
     public void Attracting(bool b)

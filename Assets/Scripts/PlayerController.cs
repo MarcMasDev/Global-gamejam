@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     //public float RunSpeed;
     public float LerpRotationPercentatge;
     public float JumpSpeed;
-    public float LerpMovement;
+    public float BlendMovement;
     public Image Image;
 
     private Vector3 _movementAxis;
@@ -27,22 +27,22 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.GetManager().SetPlayer(this);
         _charController = GetComponent<CharacterController>();
         _camController = Cam.GetComponent<CameraController>();
         _animator = GetComponent<Animator>();
         Image.enabled = false;
+    }
+    private void Start()
+    {
+        GameManager.GetManager().SetPlayer(this);
     }
 
     void Update()
     {
         Movement();
 
-        if (_attracting)
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(Cam.transform.forward.x, 0, Cam.transform.forward.z))
-                , LerpRotationPercentatge);
-        else if (_movementAxis != Vector3.zero)
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge);
+        if (_movementAxis != Vector3.zero)
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
 
         Speed();
 
@@ -85,11 +85,11 @@ public class PlayerController : MonoBehaviour
 
         if (_movementAxis != Vector3.zero)
         {
-            _speedAnimator += LerpMovement;
+            _speedAnimator += BlendMovement;
         }
         else
         {
-            _speedAnimator -= LerpMovement;
+            _speedAnimator -= BlendMovement;
         }
 
         _movementAxis.Normalize();
