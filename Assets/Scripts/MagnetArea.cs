@@ -8,10 +8,10 @@ public class MagnetArea : MonoBehaviour
     public float MagnetDuration=2.5f;
     public float currentDuration = 0f;
 
-    public Transform HeadMagnetParent;
     public Transform headPos;
     public ParticleSystem Mangentism;
     private float timer;
+    public ActionController ActionController;
     void Start()
     {
         currentDuration = 0;
@@ -23,6 +23,7 @@ public class MagnetArea : MonoBehaviour
         timer += Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
+            ActionController.SetMagenticTrigger();
             Mangentism.Play();
             timer = 0;
             currentDuration = 0;
@@ -30,6 +31,7 @@ public class MagnetArea : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            ActionController.OffMagneticTrigger();
             timer = 0;
             Mangentism.Stop();
             currentDuration = 0;

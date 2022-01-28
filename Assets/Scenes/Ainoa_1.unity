@@ -223,9 +223,38 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &279283294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1769585822277089290, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+  m_PrefabInstance: {fileID: 1050687803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &279283298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279283294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3cba684b6b23d49ab86560dd70440a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Magnetic: {fileID: 576526351}
+  Reject: {fileID: 584526296}
 --- !u!4 &509593886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1769585822277089334, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+  m_PrefabInstance: {fileID: 1050687803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &576526351 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 3598129495170003925, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+  m_PrefabInstance: {fileID: 1050687803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &584526296 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 8957441540296169194, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
   m_PrefabInstance: {fileID: 1050687803}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &653260035
@@ -276,6 +305,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &754238929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1769585823720606452, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+  m_PrefabInstance: {fileID: 1050687803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &763557423
 GameObject:
   m_ObjectHideFlags: 0
@@ -5475,6 +5509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1696353582001826896, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+      propertyPath: m_Name
+      value: HeadMagnet
+      objectReference: {fileID: 0}
     - target: {fileID: 1769585822277089290, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5540,6 +5578,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1686830220}
     - target: {fileID: 5715501628333045135, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+      propertyPath: ActionController
+      value: 
+      objectReference: {fileID: 279283298}
+    - target: {fileID: 5715501628333045135, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
       propertyPath: MaxDistanceImpact
       value: 2
       objectReference: {fileID: 0}
@@ -5551,6 +5593,10 @@ PrefabInstance:
       propertyPath: Mangentism
       value: 
       objectReference: {fileID: 1759603049}
+    - target: {fileID: 6890574261539720179, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
+      propertyPath: ActionController
+      value: 
+      objectReference: {fileID: 279283298}
     - target: {fileID: 6890574261539720179, guid: 2a1941c7149eff540a0400969fb1b893, type: 3}
       propertyPath: HeadMagnetParent
       value: 
@@ -6031,9 +6077,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagnetDuration: 1
   currentDuration: 0
-  HeadMagnetParent: {fileID: 0}
   headPos: {fileID: 0}
   Mangentism: {fileID: 0}
+  ActionController: {fileID: 0}
 --- !u!65 &1597289454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6225,7 +6271,7 @@ MonoBehaviour:
   MaxDistanceNormal: 13
   YawRotationSpeedNormal: 140
   PitchRotationSpeedNormal: 140
-  LookAtAttracting: {fileID: 509593886}
+  LookAtAttracting: {fileID: 754238929}
   MinDistanceAttracting: 10
   MaxDistanceAttracting: 11
   YawRotationSpeedAttracting: 180

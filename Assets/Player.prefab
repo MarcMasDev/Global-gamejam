@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45ec2e30cf4bf84e99b76bb8981c3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eject: {fileID: 0}
+  eject: {fileID: 3854311348357477707}
   Force: 0.2
   DistanceImpact: 0
   MaxDistanceImpact: 2
@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 1769585822277089290}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf849cb595a439549aa0515f3a795be5, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10150,9 +10150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagnetDuration: 1
   currentDuration: 0
-  HeadMagnetParent: {fileID: 0}
-  headPos: {fileID: 0}
-  Mangentism: {fileID: 0}
+  HeadMagnetParent: {fileID: 8204968747941988519}
+  headPos: {fileID: 6339717804944111359}
+  Mangentism: {fileID: 1732927675227423099}
 --- !u!54 &4385934680894934031
 Rigidbody:
   m_ObjectHideFlags: 0
