@@ -10,9 +10,14 @@ TagManager:
   - Attract
   - Platform
   - MagPlatform
+<<<<<<< HEAD
   - Head
   - MaxAtracted
   - Magnet
+=======
+  - FallZone
+  - MaxAtracted
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
