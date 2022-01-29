@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //public float RunSpeed;
     public float LerpRotationPercentatge;
     public float JumpSpeed;
+    public float AimingSpeed;
     public float BlendMovement;
     public Image Image;
     public RejectArea HeadMag;
@@ -52,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
         if (_attracting || _ejecting)
         {
-            Debug.Log("aim");
             Head.LookAt(AimPoint);
         }
 
@@ -116,6 +116,11 @@ public class PlayerController : MonoBehaviour
         //    speed = RunSpeed;
         //}
 
+        if (_attracting || _ejecting)
+        {
+            speed = AimingSpeed;
+        }
+
         _animator.SetFloat("Speed", _speedAnimator); 
 
         _movement = _movementAxis * speed * Time.deltaTime;
@@ -167,7 +172,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = false;
-                Head.transform.forward = Vector3.up;
+                Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
         }
     }
@@ -196,7 +201,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = false;
-                Head.transform.forward = Vector3.up;
+                Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
             }
         }
     }
