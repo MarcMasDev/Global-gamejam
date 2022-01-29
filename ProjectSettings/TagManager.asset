@@ -3,18 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - MagPlatform
-  - Eject
   - Attract
   - FallZone
+  - Eject
   - Interactable
   - Head
   - MaxAtracted
->>>>>>> Ainoa
   layers:
   - Default
   - TransparentFX
@@ -22,19 +17,13 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
   - 
-  - 
-  - 
-=======
->>>>>>> Ainoa
   - 
   - 
   - 
   - Player
-  - Reject
+  - Eject
   - Attach
-  - 
   - 
   - 
   - 
