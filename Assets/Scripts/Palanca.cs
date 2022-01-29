@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Palanca : MonoBehaviour
 {
     public float DotActivatePalanca;
     public bool On;
     private Animator _animator;
+    public UnityEvent OnEvent;
+    public UnityEvent OffEvent;
 
     private void Start()
     {
@@ -20,7 +23,6 @@ public class Palanca : MonoBehaviour
             colliderForward.y = 0;
             colliderForward.Normalize();
             float dot = Vector3.Dot(colliderForward, transform.forward);
-            Debug.Log(dot);
             if (dot > DotActivatePalanca)
             {
                 if (On)
@@ -29,7 +31,7 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("Off");
                         On = false;
-                        Debug.Log("Off");
+                        OffEvent.Invoke();
                     }
                 }
                 if (!On)
@@ -38,7 +40,7 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("On");
                         On = true;
-                        Debug.Log("On");
+                        OnEvent.Invoke();
                     }
                 }
             }
@@ -50,7 +52,7 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("Off");
                         On = false;
-                        Debug.Log("Off");
+                        OffEvent.Invoke();
                     }
                 }
                 if (!On)
@@ -59,12 +61,10 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("On");
                         On = true;
-                        Debug.Log("On");
+                        OnEvent.Invoke();
                     }
                 }
             }
-            //Vector3 playerPos = GameManager.GetManager().GetPlayer().transform.position;
-            //playerRelativeRot = transform.rotation 
         }
     }
 }
