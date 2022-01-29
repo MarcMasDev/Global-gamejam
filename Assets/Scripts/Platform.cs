@@ -2,25 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagPlatformController : MonoBehaviour
+public class Platform : MonoBehaviour
 {
     public Transform FrontPoint;
     public Transform BackPoint;
-    private bool _moveF;
+    private bool _moveF = true;
     private bool _moveB;
     public float speed;
-
-    private void Start()
-    {
-    }
-    public void MoveFront()
-    {
-        _moveF = true;
-    }
-    public void MoveBack()
-    {
-        _moveB = true;
-    }
     private void FixedUpdate()
     {
         Vector3 newPos = Vector3.zero;
@@ -31,6 +19,11 @@ public class MagPlatformController : MonoBehaviour
             {
                 transform.position = newPos;
             }
+            else
+            {
+                _moveF = false;
+                _moveB = true;
+            }
         }
         else if (_moveB)
         {
@@ -39,10 +32,11 @@ public class MagPlatformController : MonoBehaviour
             {
                 transform.position = newPos;
             }
+            else
+            {
+                _moveF = true;
+                _moveB = false;
+            }
         }
-
-
-        _moveF = false;
-        _moveB = false;
     }
 }
