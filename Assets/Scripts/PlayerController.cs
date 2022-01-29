@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
         if ((collisionFlags & CollisionFlags.Below) != 0)
         {
-               _onGround = true;
+            _onGround = true;
             _animator.SetBool("OnGround", true);
         }
         else if ((collisionFlags & CollisionFlags.Below) == 0)
@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour
 
         if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
             _verticalSpeed = 0.0f;
+
     }
 
     void Attracting()
@@ -216,7 +217,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && CanJump())
+        if (Input.GetKeyDown(KeyCode.Space) && CanJump() )
         {
             //animator
             _verticalSpeed = JumpSpeed;
@@ -227,7 +228,7 @@ public class PlayerController : MonoBehaviour
 
     bool CanJump()
     {
-        return _onGround && !_attracting && !_ejecting;
+        return _onGround && !_attracting && !_ejecting && GameManager.GetManager().GetRejectArea().ObjectAttached == null;
     }
 
     bool CanAttract()

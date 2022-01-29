@@ -12,6 +12,9 @@ public class RejectArea : MonoBehaviour
     public ActionController ActionController;
     public Collider Head;
 
+    public Transform HeadPos;
+    public Transform ObjectAttachedMesh;
+
     //public List<GameObject> ObjectsAttached = new List<GameObject>();
     public GameObject ObjectAttached;
     private bool canPush = true;
@@ -35,7 +38,10 @@ public class RejectArea : MonoBehaviour
         //Rigidbody rb = ObjectsAttached[0].GetComponent<Rigidbody>();
         if (ObjectAttached != null)
         {
+            ObjectAttached.SetActive(true);
+            ObjectAttachedMesh.gameObject.GetComponent<MeshFilter>().mesh = null;
             Rigidbody rb = ObjectAttached.GetComponent<Rigidbody>();
+
             rb.isKinematic = false;
             //rb.AddForceAtPosition(Camera.main.transform.forward * Force, rb.transform.position, ForceMode.Impulse);
             rb.velocity = Vector3.zero;
@@ -89,16 +95,23 @@ public class RejectArea : MonoBehaviour
 
     public void StartRejectism()
     {
-        Head.enabled = false;
-        eject.Play();
-        ActionController.SetRejectTrigger();
-        Reject();
+        if (canPush)
+        {
+            Head.enabled = false;
+            
+            eject.gameObject.SetActive(true);
+            eject.Play();
+            ActionController.SetRejectTrigger();
+            Reject();
+        }
+       
     }
     public void EndRejectism()
     {
         Head.enabled = true;
-        ActionController.OffMagneticTrigger();
+        ActionController.OffRejectTrigger();
         eject.Stop();
+        eject.gameObject.SetActive(false);
     }
     private IEnumerator SetCanReject()
     {
