@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
         CollisionFlags collisionFlags = _charController.Move(_movement);
         if ((collisionFlags & CollisionFlags.Below) != 0)
         {
-            _onGround = true;
+               _onGround = true;
             _animator.SetBool("OnGround", true);
         }
         else if ((collisionFlags & CollisionFlags.Below) == 0)
