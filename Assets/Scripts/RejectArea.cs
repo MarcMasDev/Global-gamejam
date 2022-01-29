@@ -41,7 +41,7 @@ public class RejectArea : MonoBehaviour
             Rigidbody rb = ObjectAttached.GetComponent<Rigidbody>();
 
             rb.isKinematic = false;
-            rb.AddForceAtPosition(Camera.main.transform.forward * Force * 2f, rb.transform.position, ForceMode.Impulse);
+           // rb.AddForceAtPosition(Camera.main.transform.forward * Force * 2f, rb.transform.position, ForceMode.Impulse);
             ObjectAttached.transform.SetParent(null);
             ObjectAttached = null;
 
@@ -91,15 +91,15 @@ public class RejectArea : MonoBehaviour
 
     public void StartRejectism()
     {
-        if (canPush)
-        {
+        
+        
             Head.enabled = false;
             
             eject.gameObject.SetActive(true);
             eject.Play();
             ActionController.SetRejectTrigger();
             Reject();
-        }
+        
        
     }
     public void EndRejectism()
