@@ -19,6 +19,8 @@ public class AtractArea : MonoBehaviour
         currentDuration = 0;
     }
 
+     
+
     private void OnTriggerStay(Collider other)
     {
 
@@ -42,6 +44,9 @@ public class AtractArea : MonoBehaviour
             //function
             other.GetComponent<MaxAtracted>().AddAtraction();
         }
+
+
+
     }
 
     private void OnTriggerExit(Collider other)
