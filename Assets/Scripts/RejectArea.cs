@@ -11,7 +11,8 @@ public class RejectArea : MonoBehaviour
     public ActionController ActionController;
     public Collider Head;
 
-    public List<GameObject> ObjectsAttached = new List<GameObject>();
+    //public List<GameObject> ObjectsAttached = new List<GameObject>();
+    public GameObject ObjectAttached;
 
     private void Start()
     {
@@ -21,47 +22,63 @@ public class RejectArea : MonoBehaviour
 
     public void Reject()
     {
-       
-        if (ObjectsAttached.Count != 0)
+
+        //if (ObjectsAttached.Count != 0)
+        //{
+
+        //for (int i = 0; i < ObjectsAttached.Count; i++)
+        //{
+        //    ObjectsAttached[i].transform.SetParent(null);
+
+        //Rigidbody rb = ObjectsAttached[0].GetComponent<Rigidbody>();
+        if (ObjectAttached != null)
         {
-           
-            for (int i = 0; i < ObjectsAttached.Count; i++)
-            {
-                ObjectsAttached[i].transform.SetParent(null);
-                
-                Rigidbody rb = ObjectsAttached[i].GetComponent<Rigidbody>();
-                rb.isKinematic = false;
-                rb.AddForceAtPosition(Camera.main.transform.forward * Force * 2f, rb.transform.position, ForceMode.Impulse);
-                ObjectsAttached.Remove(ObjectsAttached[i].gameObject);
-            }
+            Rigidbody rb = ObjectAttached.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            rb.AddForceAtPosition(Camera.main.transform.forward * Force * 2f, rb.transform.position, ForceMode.Impulse);
+            ObjectAttached.transform.SetParent(transform);
+            ObjectAttached = null;
+
         }
+
+        //rb.isKinematic = false;
+        //rb.AddForceAtPosition(Camera.main.transform.forward * Force * 2f, rb.transform.position, ForceMode.Impulse);
+        //ObjectsAttached.Remove(ObjectsAttached[i].gameObject);
+        //}
+        //}
     }
 
     public void AddRejectStatus(GameObject other)
     {
         //head mangent
-        other.transform.SetParent(transform);
-        GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
-        other.GetComponent<Rigidbody>().isKinematic = true;
+        if (ObjectAttached != null)
+        {
+            other.transform.SetParent(transform);
+            //GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
+            GameManager.GetManager().GetRejectArea().ObjectAttached = other.gameObject;
+            other.GetComponent<Rigidbody>().isKinematic = true;
+        }
+       
 
 
     }
     private void OnTriggerStay(Collider other)
     {
-        if((other.CompareTag("Interactable") || other.CompareTag("Cube")))
+        if(other.CompareTag("Interactable"))
         {
-            if (!ObjectsAttached.Contains(other.gameObject))
-            {
+            //if (!ObjectsAttached.Contains(other.gameObject))
+            //{
                 Rigidbody og = other.GetComponent<Rigidbody>();
                 DistanceImpact = Vector3.Distance(other.transform.position, transform.position);
                 DistanceImpact = Mathf.Clamp(DistanceImpact, 0, MaxDistanceImpact);
                 og.AddForceAtPosition(Camera.main.transform.forward * Force * DistanceImpact, og.transform.position, ForceMode.Impulse);
-            }
+            //}
         }
+
+
         if (other.CompareTag("MaxAtracted"))
         {
-            //function
-            print("atracted");
+            //functionw
             other.GetComponent<MaxAtracted>().RemoveAtraction();
         }
     }
