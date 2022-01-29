@@ -11,6 +11,7 @@ TagManager:
   - Platform
   - MagPlatform
   - FallZone
+  - MaxAtracted
   layers:
   - Default
   - TransparentFX
