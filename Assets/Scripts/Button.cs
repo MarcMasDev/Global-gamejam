@@ -17,6 +17,7 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if (other.GetComponent<>)
         _press = true;
         _animator.SetBool("Press", _press);
         PressEvent.Invoke();
