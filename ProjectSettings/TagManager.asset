@@ -10,6 +10,7 @@ TagManager:
   - Attract
   - Platform
   - MagPlatform
+  - FallZone
   layers:
   - Default
   - TransparentFX
