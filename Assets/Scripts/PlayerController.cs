@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         _camController = Cam.GetComponent<CameraController>();
         _animator = GetComponent<Animator>();
         Image.enabled = false;
+        Head.transform.forward = Vector3.up;
     }
     private void Start()
     {
@@ -46,8 +47,14 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
 
-        //if (_movementAxis != Vector3.zero)
-        //    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
+        if (_movementAxis != Vector3.zero)
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
+
+        if (_attracting || _ejecting)
+        {
+            Debug.Log("aim");
+            Head.LookAt(AimPoint);
+        }
 
         Speed();
 
@@ -58,8 +65,6 @@ public class PlayerController : MonoBehaviour
         Ejecting();
 
         Jump();
-
-        Head.LookAt(AimPoint);
     }
 
     void Movement()
@@ -162,6 +167,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = false;
+                Head.transform.forward = Vector3.up;
             }
         }
     }
@@ -190,6 +196,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = false;
+                Head.transform.forward = Vector3.up;
             }
         }
     }
