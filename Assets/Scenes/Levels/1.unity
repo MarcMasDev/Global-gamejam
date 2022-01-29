@@ -2434,6 +2434,10 @@ PrefabInstance:
       propertyPath: Force
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5408254090394735658, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7092097563856871368, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
       propertyPath: m_Height
       value: 1.01
@@ -2444,7 +2448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7092097563856871368, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
       propertyPath: m_SkinWidth
-      value: 0.08
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 7092097563856871369, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2469,6 +2473,10 @@ PrefabInstance:
     - target: {fileID: 7092097563856871412, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
       propertyPath: AimingSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883636218042289070, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8854892459899828016, guid: 9ff8a945e9cf90d42ae972d9a2ba3c82, type: 3}
       propertyPath: m_RootOrder

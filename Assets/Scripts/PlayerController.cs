@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private bool _ejecting;
 
     private float _speedAnimator;
+    private float _fallTiming=0;
 
     private void Awake()
     {
@@ -131,12 +132,13 @@ public class PlayerController : MonoBehaviour
         _movement = _movementAxis * speed * Time.deltaTime;
     }
 
+
+
     void Gravity()
     {
         _movement.y = _verticalSpeed * Time.deltaTime;
-        _verticalSpeed += Physics.gravity.y * Time.deltaTime;
-
         CollisionFlags collisionFlags = _charController.Move(_movement);
+
         if ((collisionFlags & CollisionFlags.Below) != 0)
         {
             _onGround = true;
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
         }
         else if ((collisionFlags & CollisionFlags.Below) == 0)
         {
+            _verticalSpeed += Physics.gravity.y * Time.deltaTime;
             _onGround = false;
             _animator.SetBool("OnGround", false);
             //animator
@@ -216,7 +219,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && CanJump())
         {
             //animator
-
             _verticalSpeed = JumpSpeed;
         }
 
