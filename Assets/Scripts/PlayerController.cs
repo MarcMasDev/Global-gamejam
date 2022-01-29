@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public float JumpSpeed;
     public float BlendMovement;
     public Image Image;
-    public HeadMagnet HeadMag;
-    public MagnetArea MagArea;
+    public RejectArea HeadMag;
+    public AtractArea MagArea;
     public Transform AimPoint;
     public Transform Head;
 
@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                HeadMag.StartMagnetism();
+                HeadMag.StartRejectism();
                 _ejecting = true;
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyUp(KeyCode.Mouse1))
             {
-                HeadMag.EndMagnetism();
+                HeadMag.EndRejectism();
                 _ejecting = false;
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
