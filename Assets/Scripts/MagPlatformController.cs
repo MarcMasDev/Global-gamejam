@@ -57,12 +57,10 @@ public class MagPlatformController : MonoBehaviour
             {
                 if (other.tag == "Eject")
                 {
-                    Debug.Log("A");
                     _moveF = true;
                 }
                 else if (other.tag == "Attract")
                 {
-                    Debug.Log("A");
                     _moveB = true;
                 }
             }
@@ -70,12 +68,10 @@ public class MagPlatformController : MonoBehaviour
             {
                 if (other.tag == "Attract")
                 {
-                    Debug.Log("A");
                     _moveF = true;
                 }
                 if (other.tag == "Eject")
                 {
-                    Debug.Log("A");
                     _moveB = true;
                 }
             }
