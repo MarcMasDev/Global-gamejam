@@ -9975,6 +9975,7 @@ Transform:
   m_Children:
   - {fileID: 1724366613598885431}
   - {fileID: 1724366613957946495}
+  - {fileID: 1724366614700963193}
   m_Father: {fileID: 8854892459899828016}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -10058,6 +10059,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorFade: {fileID: 1724366614177550895}
+  VSF_Portal: {fileID: 1724366613957946488}
+  mr: {fileID: 2100000, guid: 654f432608a2b5e44b1333aa0ceaec7f, type: 2}
+  ZeroIntensity: 0
+  OneIntensity: 1
 --- !u!1 &1724366613598885424
 GameObject:
   m_ObjectHideFlags: 0
@@ -10307,8 +10312,7 @@ Transform:
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0.055, y: -0.061, z: -0.01}
   m_LocalScale: {x: 0.7531014, y: 1.0076632, z: 0.7531014}
-  m_Children:
-  - {fileID: 1724366614700963193}
+  m_Children: []
   m_Father: {fileID: 1724366613510088580}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
@@ -10334,7 +10338,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.6745283, y: 0.9615664, z: 1, w: 0}
+        m_Name: ParticleColor
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.35742354, z: 1, w: 0}
+        m_Name: ExplosionColo
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -10477,7 +10487,7 @@ GameObject:
   - component: {fileID: 1724366614700963199}
   - component: {fileID: 1724366614700963192}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: QuadPortalVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10490,12 +10500,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724366614700963194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.084, z: 0.28}
-  m_LocalScale: {x: 7.0067773, y: 5.8387957, z: 5.8387957}
+  m_LocalRotation: {x: -0.5000001, y: 0.49999994, z: 0.49999994, w: 0.5}
+  m_LocalPosition: {x: -0.029663086, y: 0.14986993, z: -0.04013063}
+  m_LocalScale: {x: 5.2768135, y: 5.883539, z: 4.3972054}
   m_Children: []
-  m_Father: {fileID: 1724366613957946495}
-  m_RootOrder: 0
+  m_Father: {fileID: 1724366613510088580}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1724366614700963199
 MeshFilter:
@@ -11472,7 +11482,7 @@ MonoBehaviour:
   MaxDistanceImpact: 2
   ActionController: {fileID: 8854892458219870374}
   Head: {fileID: 7883636218042289070}
-  ObjectsAttached: []
+  ObjectAttached: {fileID: 0}
 --- !u!65 &7883636218042289070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11784,7 +11794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8854892459899828016}
   m_Layer: 0
-  m_Name: LevelPack
+  m_Name: FadeLevelPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
