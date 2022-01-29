@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
         {
             Head.LookAt(AimPoint);
         }
+        //else
+        //    Head.transform.forward = Vector3.up;
 
         Speed();
 
@@ -175,7 +177,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = false;
-                Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                //Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
         }
     }
@@ -204,7 +206,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = false;
-                Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
+              //  Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
             }
         }
     }

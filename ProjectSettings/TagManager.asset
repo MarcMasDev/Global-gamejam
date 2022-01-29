@@ -4,13 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cube
-  - Interactable
-  - Eject
   - Attract
-  - Platform
-  - MagPlatform
   - FallZone
+  - Eject
+  - Interactable
+  - Head
   - MaxAtracted
   layers:
   - Default
@@ -19,13 +17,13 @@ TagManager:
   - 
   - Water
   - UI
+  - 
+  - 
+  - 
+  - 
   - Player
-  - Acttract
   - Eject
-  - 
-  - 
-  - 
-  - 
+  - Attach
   - 
   - 
   - 

@@ -22,17 +22,17 @@ public class AtractArea : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if ((other.CompareTag("Interactable") || other.CompareTag("Cube")) )
+        if (other.CompareTag("Interactable") && GameManager.GetManager().GetRejectArea().ObjectAttached == null)
         {
             currentDuration += Time.deltaTime;
             float l_Pct = Mathf.Min(1, currentDuration / MagnetDuration);
             other.transform.position = Vector3.Lerp(other.transform.position, headPos.position, l_Pct / MagnetDuration);
 
-            if (l_Pct == 1 && !GameManager.GetManager().GetRejectArea().ObjectsAttached.Contains(other.gameObject))
+            if ((l_Pct >= 0.8 && l_Pct <= 1) && GameManager.GetManager().GetRejectArea().ObjectAttached == null)//!GameManager.GetManager().GetRejectArea().ObjectsAttached.Contains(other.gameObject))
             {
-               
                 other.transform.SetParent(RejectAreaParent);
-                GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
+                //GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
+                GameManager.GetManager().GetRejectArea().ObjectAttached = other.gameObject;
                 other.GetComponent<Rigidbody>().isKinematic = true;
                 
             }
