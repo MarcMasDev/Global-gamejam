@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3450359080200397399}
   - component: {fileID: 9099863804197069021}
   - component: {fileID: 6315034303133732094}
+  - component: {fileID: 518287963305907091}
   m_Layer: 0
   m_Name: CuboEnergia
   m_TagString: Untagged
@@ -112,3 +113,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &518287963305907091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810853689074959234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1669939e5ad43346b266ec8f5dff0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
