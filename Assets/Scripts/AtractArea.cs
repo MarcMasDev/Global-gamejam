@@ -8,7 +8,9 @@ public class AtractArea : MonoBehaviour
     public float MagnetDuration=1f;
     public float currentDuration = 0f;
 
-    public Transform headPos;
+    public Transform Pos;
+    public Transform ObjectAttachedMesh;
+    public MeshFilter MeshFilterToCompare;
     public Transform RejectAreaParent;
     public ParticleSystem Mangentism;
     public ActionController ActionController;
@@ -26,15 +28,23 @@ public class AtractArea : MonoBehaviour
         {
             currentDuration += Time.deltaTime;
             float l_Pct = Mathf.Min(1, currentDuration / MagnetDuration);
-            other.transform.position = Vector3.Lerp(other.transform.position, headPos.position, l_Pct / MagnetDuration);
+            other.transform.position = Vector3.Lerp(other.transform.position, Pos.position, l_Pct / MagnetDuration);
 
-            if ((l_Pct >= 0.8 && l_Pct <= 1) && GameManager.GetManager().GetRejectArea().ObjectAttached == null)//!GameManager.GetManager().GetRejectArea().ObjectsAttached.Contains(other.gameObject))
+            if ((l_Pct >= 0.7 && l_Pct <= 1) && GameManager.GetManager().GetRejectArea().ObjectAttached == null)//!GameManager.GetManager().GetRejectArea().ObjectsAttached.Contains(other.gameObject))
             {
                 other.transform.SetParent(RejectAreaParent);
                 //GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
                 GameManager.GetManager().GetRejectArea().ObjectAttached = other.gameObject;
                 other.GetComponent<Rigidbody>().isKinematic = true;
-                
+
+
+                if (other.GetComponent<Cube>())
+                {
+                    other.gameObject.SetActive(false);
+                    ObjectAttachedMesh.GetComponent<MeshFilter>().mesh = other.GetComponent<MeshFilter>().mesh;
+                }
+
+
             }
         }
         if (other.CompareTag("MaxAtracted"))
@@ -55,7 +65,10 @@ public class AtractArea : MonoBehaviour
     public void StartMagnetism()
     {
         ActionController.SetMagenticTrigger();
+       
+        Mangentism.gameObject.SetActive(true);
         Mangentism.Play();
+        print("A");
         //timer = 0;
         currentDuration = 0;
     }
@@ -65,6 +78,7 @@ public class AtractArea : MonoBehaviour
         ActionController.OffMagneticTrigger();
         //timer = 0;
         Mangentism.Stop();
+        Mangentism.gameObject.SetActive(false);
         currentDuration = 0;
     }
 }
