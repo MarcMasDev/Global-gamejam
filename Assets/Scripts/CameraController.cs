@@ -8,11 +8,11 @@ public class CameraController : MonoBehaviour
     public float YawRotationSpeedNormal;
     public float PitchRotationSpeedNormal;
     [Header("Attracting")]
-    public Transform LookAtAttracting;
-    public float MinDistanceAttracting;
-    public float MaxDistanceAttracting;
-    public float YawRotationSpeedAttracting;
-    public float PitchRotationSpeedAttracting;
+    public Transform LookAtAiming;
+    public float MinDistanceAiming;
+    public float MaxDistanceAiming;
+    public float YawRotationSpeedAiming;
+    public float PitchRotationSpeedAiming;
     [Header("Common")]
     public float MinPitch;
     public float MaxPitch;
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Attracting(false);
+        Aiming(false);
         GameManager.GetManager().SetCamera(this);
     }
     private void LateUpdate()
@@ -74,10 +74,10 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = desiredPostion;
-        transform.LookAt(_lookAt);
+        transform.LookAt(_lookAt.position);
     }
 
-    public void Attracting(bool b)
+    public void Aiming(bool b)
     {
         if (!b)
         {
@@ -90,11 +90,11 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            _lookAt = LookAtAttracting;
-            _minDistance = MinDistanceAttracting;
-            _maxDistance = MaxDistanceAttracting;
-            _yawRotationSpeed = YawRotationSpeedAttracting;
-            _pitchRotationSpeed = PitchRotationSpeedAttracting;
+            _lookAt = LookAtAiming;
+            _minDistance = MinDistanceAiming;
+            _maxDistance = MaxDistanceAiming;
+            _yawRotationSpeed = YawRotationSpeedAiming;
+            _pitchRotationSpeed = PitchRotationSpeedAiming;
         }
     }
 }

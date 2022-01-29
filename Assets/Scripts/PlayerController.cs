@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public float JumpSpeed;
     public float BlendMovement;
     public Image Image;
+    public HeadMagnet HeadMag;
+    public MagnetArea MagArea;
+    public Transform AimPoint;
+    public Transform Head;
 
     private Vector3 _movementAxis;
     private Vector3 _movement;
@@ -22,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _onGround;
     private bool _attracting;
+    private bool _ejecting;
 
     private float _speedAnimator;
 
@@ -41,8 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
 
-        if (_movementAxis != Vector3.zero)
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
+        //if (_movementAxis != Vector3.zero)
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
 
         Speed();
 
@@ -50,7 +55,11 @@ public class PlayerController : MonoBehaviour
 
         Attracting();
 
+        Ejecting();
+
         Jump();
+
+        Head.LookAt(AimPoint);
     }
 
     void Movement()
@@ -133,11 +142,40 @@ public class PlayerController : MonoBehaviour
     {
         if (CanAttract())
         {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                MagArea.StartMagnetism();
+                _attracting = true;
+                _camController.Aiming(_attracting);
+                _animator.SetBool("Attracting", _attracting);
+                Image.enabled = true;
+
+            }
+            else if (Input.GetKey(KeyCode.Mouse0))
+            {
+
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                MagArea.EndMagnetism();
+                _attracting = false;
+                _camController.Aiming(_attracting);
+                _animator.SetBool("Attracting", _attracting);
+                Image.enabled = false;
+            }
+        }
+    }
+
+    void Ejecting()
+    {
+        if (CanEject())
+        {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                _attracting = true;
-                _camController.Attracting(_attracting);
-                _animator.SetBool("Attracting", _attracting);
+                HeadMag.StartMagnetism();
+                _ejecting = true;
+                _camController.Aiming(_ejecting);
+                _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = true;
 
             }
@@ -147,9 +185,10 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyUp(KeyCode.Mouse1))
             {
-                _attracting = false;
-                _camController.Attracting(_attracting);
-                _animator.SetBool("Attracting", _attracting);
+                HeadMag.EndMagnetism();
+                _ejecting = false;
+                _camController.Aiming(_ejecting);
+                _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = false;
             }
         }
@@ -169,11 +208,16 @@ public class PlayerController : MonoBehaviour
 
     bool CanJump()
     {
-        return _onGround && !_attracting;
+        return _onGround && !_attracting && !_ejecting;
     }
 
     bool CanAttract()
     {
-        return _onGround;
+        return _onGround && !_ejecting;
+    }
+
+    bool CanEject()
+    {
+        return _onGround && !_attracting;
     }
 }
