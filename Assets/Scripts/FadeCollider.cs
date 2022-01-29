@@ -68,10 +68,10 @@ public class FadeCollider : MonoBehaviour
     private IEnumerator RemoveIntensity()
     {
         VSF_Portal.SetActive(false);
-        for (float i = OneIntensity; i > OneIntensity;)
+        for (float i = OneIntensity; i > ZeroIntensity;)
         {
-            yield return new WaitForSeconds(0.2f);
-            i -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+            i -= 0.2f;
             mr.SetFloat("Vector1_564c2d8ba9384ad59570b221315de88d", i);
         }
     }
@@ -82,6 +82,7 @@ public class FadeCollider : MonoBehaviour
 
     public void ClosePortal()
     {
+        StopAllCoroutines();
         StartCoroutine(RemoveIntensity());
     }
 }

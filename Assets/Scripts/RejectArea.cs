@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,6 @@ public class RejectArea : MonoBehaviour
 
     //public List<GameObject> ObjectsAttached = new List<GameObject>();
     public GameObject ObjectAttached;
-    private bool canPush = true;
 
     private void Start()
     {
@@ -43,8 +41,7 @@ public class RejectArea : MonoBehaviour
             Rigidbody rb = ObjectAttached.GetComponent<Rigidbody>();
 
             rb.isKinematic = false;
-            //rb.AddForceAtPosition(Camera.main.transform.forward * Force, rb.transform.position, ForceMode.Impulse);
-            rb.velocity = Vector3.zero;
+            rb.AddForceAtPosition(Camera.main.transform.forward * Force * 2f, rb.transform.position, ForceMode.Impulse);
             ObjectAttached.transform.SetParent(null);
             ObjectAttached = null;
 
@@ -66,7 +63,6 @@ public class RejectArea : MonoBehaviour
             //GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
             GameManager.GetManager().GetRejectArea().ObjectAttached = other.gameObject;
             other.GetComponent<Rigidbody>().isKinematic = true;
-            StartCoroutine(SetCanReject());
         }
        
 
@@ -74,7 +70,7 @@ public class RejectArea : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Interactable") && canPush)
+        if(other.CompareTag("Interactable"))
         {
             //if (!ObjectsAttached.Contains(other.gameObject))
             //{
@@ -112,12 +108,6 @@ public class RejectArea : MonoBehaviour
         ActionController.OffRejectTrigger();
         eject.Stop();
         eject.gameObject.SetActive(false);
-    }
-    private IEnumerator SetCanReject()
-    {
-        canPush = false;
-        yield return new WaitForSeconds(0.2f);
-        canPush = true;
     }
 
 }
