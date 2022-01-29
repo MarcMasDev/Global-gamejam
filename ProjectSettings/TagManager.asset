@@ -3,21 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Cube
-  - Interactable
-  - Eject
-  - Attract
-  - Platform
-  - MagPlatform
-<<<<<<< HEAD
-  - Head
-  - MaxAtracted
-  - Magnet
-=======
-  - FallZone
-  - MaxAtracted
->>>>>>> main
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -25,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Acttract
-  - Eject
+  - 
+  - 
+  - 
   - 
   - 
   - 

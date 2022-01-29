@@ -76,7 +76,8 @@ public class RejectArea : MonoBehaviour
     public void EndRejectism()
     {
         Head.enabled = true;
-        ActionController.OffRejectTrigger();
+        ActionController.OffMagneticTrigger();
         eject.Stop();
     }
+
 }

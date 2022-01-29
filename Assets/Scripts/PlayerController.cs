@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private float _speedAnimator;
 
-
     private void Awake()
     {
         _charController = GetComponent<CharacterController>();
@@ -50,8 +49,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-         Movement();
-  
+        Movement();
+
         if (_movementAxis != Vector3.zero)
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
 
@@ -158,7 +157,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                print("key");
                 MagArea.StartMagnetism();
                 _attracting = true;
                 _camController.Aiming(_attracting);
@@ -193,8 +191,6 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = true;
-                
-                
 
             }
             else if (Input.GetKey(KeyCode.Mouse1))
