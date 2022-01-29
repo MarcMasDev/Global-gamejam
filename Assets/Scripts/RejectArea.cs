@@ -58,10 +58,11 @@ public class RejectArea : MonoBehaviour
                 og.AddForceAtPosition(Camera.main.transform.forward * Force * DistanceImpact, og.transform.position, ForceMode.Impulse);
             }
         }
-
+        print(other.tag);
         if (other.CompareTag("MaxAtracted"))
         {
             //function
+            print("atracted");
             other.GetComponent<MaxAtracted>().RemoveAtraction();
         }
     }

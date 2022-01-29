@@ -10,7 +10,7 @@ public class MaxAtracted : MonoBehaviour
 
     public void AddAtraction()
     {
-
+        print("A");
         if (transform.position.x< LimitDistance.transform.position.x && !broken )
         {
             transform.position += new Vector3(0.1f, 0, 0);
