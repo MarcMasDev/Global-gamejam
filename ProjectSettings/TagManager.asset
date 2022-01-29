@@ -8,6 +8,8 @@ TagManager:
   - Interactable
   - Eject
   - Attract
+  - Platform
+  - MagPlatform
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public MagnetArea MagArea;
     public Transform AimPoint;
     public Transform Head;
+    public float DotActivateMagPlatform;
 
     private Vector3 _movementAxis;
     private Vector3 _movement;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController _charController;
     private CameraController _camController;
     private Animator _animator;
+    private GameObject _currentPlatform;
+    private MagPlatformController _magPlatformController;
 
     private bool _onGround;
     private bool _attracting;
@@ -232,4 +235,77 @@ public class PlayerController : MonoBehaviour
     {
         return _onGround && !_attracting;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if ((other.tag == "Platform" || other.tag == "MagPlatform") && _currentPlatform == null)
+        {
+            AttachElevator(other);
+            if (other.tag == "MagPlatform")
+            {
+                _magPlatformController = _currentPlatform.GetComponent<MagPlatformController>();
+                Debug.Log(_magPlatformController);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "MagPlatform" && _currentPlatform == other.gameObject)
+        {
+            if (_ejecting || _attracting)
+            {
+                Vector3 colliderForward = other.transform.forward;
+                colliderForward.y = 0;
+                colliderForward.Normalize();
+                float dot = Vector3.Dot(colliderForward, Head.transform.forward);
+                if (dot > DotActivateMagPlatform)
+                {
+                    if (_ejecting)
+                    {
+                        _magPlatformController.MoveBack();
+                    }
+                    else if (_attracting)
+                    {
+                        _magPlatformController.MoveFront();
+                    }
+                }
+                else if (dot < -DotActivateMagPlatform)
+                {
+                    if (_attracting)
+                    {
+                        _magPlatformController.MoveBack();
+                    }
+                    if (_ejecting)
+                    {
+                        _magPlatformController.MoveFront();
+                    }
+                }
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if ((other.tag == "Platform" || other.tag == "MagPlatform") && _currentPlatform == other.gameObject)
+        {
+            DetachElevator();
+        _magPlatformController = null;
+    }
+    }
+
+    void AttachElevator(Collider elevator)
+    {
+        _currentPlatform = elevator.gameObject;
+        transform.SetParent(elevator.transform);
+
+    }
+    void DetachElevator()
+    {
+        _currentPlatform = null;
+        transform.SetParent(null);
+        Vector3 eulerAngles = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(0.0f, eulerAngles.y, 0.0f);
+    }
+
 }
