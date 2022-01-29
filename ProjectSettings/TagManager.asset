@@ -10,6 +10,9 @@ TagManager:
   - Attract
   - Platform
   - MagPlatform
+  - Head
+  - MaxAtracted
+  - Magnet
   layers:
   - Default
   - TransparentFX
