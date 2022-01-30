@@ -638,8 +638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d067463c0a917a499e80370418fcf14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Minus: {fileID: 0}
-  Plus: {fileID: 0}
+  Minus: {fileID: 1647495101}
+  Plus: {fileID: 1010611600}
 --- !u!1 &1600810692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6266390715559821923, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7806209038325939240, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1244,6 +1248,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCam
       objectReference: {fileID: 0}
+    - target: {fileID: 7806209038580862987, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: MaxDistanceAiming
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806209038580862987, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: MaxDistanceNormal
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806209038580862987, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: MinDistanceAiming
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806209038580862987, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: MinDistanceNormal
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8420584704374953168, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1255,6 +1275,14 @@ PrefabInstance:
     - target: {fileID: 8420584704374953196, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
       propertyPath: Image
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420584704374953196, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: Pointer
+      value: 
+      objectReference: {fileID: 1561428226}
+    - target: {fileID: 8420584705817110035, guid: 3f5259b1c685cf34b952104b99199952, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f5259b1c685cf34b952104b99199952, type: 3}

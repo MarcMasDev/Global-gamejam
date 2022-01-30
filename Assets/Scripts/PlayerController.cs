@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour
     public float JumpSpeed;
     public float AimingSpeed;
     public float BlendMovement;
-    public Image Image;
     public RejectArea HeadMag;
     public AtractArea MagArea;
     public float DotActivateMagPlatform;
     public MultiAimConstraint AimConstraint;
+    public Pointer Pointer;
 
     private Vector3 _movementAxis;
     private Vector3 _movement;
@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
         _charController = GetComponent<CharacterController>();
         _camController = Cam.GetComponent<CameraController>();
         _animator = GetComponent<Animator>();
-        Image.enabled = false;
     }
     private void Start()
     {
@@ -111,11 +110,13 @@ public class PlayerController : MonoBehaviour
 
         if (_movementAxis != Vector3.zero)
         {
-            _speedAnimator += BlendMovement;
+            //_speedAnimator += BlendMovement;
+            _speedAnimator = 1;
         }
         else
         {
-            _speedAnimator -= BlendMovement;
+            //_speedAnimator -= BlendMovement;
+            _speedAnimator = 0;
         }
 
         _movementAxis.Normalize();
@@ -173,7 +174,7 @@ public class PlayerController : MonoBehaviour
                 _attracting = true;
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
-                Image.enabled = true;
+                Pointer.ShowMinus();
                 LPF.ModifiyPassFilter();
 
             }
@@ -187,7 +188,7 @@ public class PlayerController : MonoBehaviour
                 _attracting = false;
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
-                Image.enabled = false;
+                Pointer.Hide();
                 LPF.ResetPassFilter();
                 //Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
@@ -204,7 +205,7 @@ public class PlayerController : MonoBehaviour
                 _ejecting = true;
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
-                Image.enabled = true;
+                Pointer.ShowPlus();
                 LPF.ModifiyPassFilter();
 
             }
@@ -218,7 +219,7 @@ public class PlayerController : MonoBehaviour
                 _ejecting = false;
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
-                Image.enabled = false;
+                Pointer.Hide();
                 LPF.ResetPassFilter();
               //  Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
             }
