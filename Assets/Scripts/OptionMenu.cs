@@ -7,8 +7,8 @@ using TMPro;
 
 public class OptionMenu : MonoBehaviour
 {
-    public AudioMixer AudioMixer;
-
+    public AudioMixer TheMixer;
+    public Slider musicSlider, sfxSlider;
     public TMP_Dropdown ResolutionDropdown;
 
     public TMP_Text FullscreenText;
@@ -47,6 +47,10 @@ public class OptionMenu : MonoBehaviour
         ResolutionDropdown.AddOptions(options);
         ResolutionDropdown.value = currentResolutionIndex;
         ResolutionDropdown.RefreshShownValue();
+
+        SetMusicVolume();
+        SetSFXVolume();
+        //SetMasterVolume();
     }
 
     public void SetResolution(int resolutionIndex)
@@ -71,4 +75,24 @@ public class OptionMenu : MonoBehaviour
         Screen.fullScreen = _fullscreen;
     }
 
+
+    ///
+
+
+
+    public void SetMasterVolume()
+    {
+        TheMixer.SetFloat("MasterVol", 0);
+    }
+    public void SetMusicVolume()
+    {
+
+        TheMixer.SetFloat("MusicVol", Mathf.Log10(musicSlider.value) * 20);
+    }
+
+    public void SetSFXVolume()
+    {
+
+        TheMixer.SetFloat("SFXVol", Mathf.Log10((sfxSlider.value) * 20));
+    }
 }
