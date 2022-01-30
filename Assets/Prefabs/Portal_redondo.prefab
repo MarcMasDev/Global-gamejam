@@ -112,9 +112,9 @@ AudioSource:
   m_GameObject: {fileID: 6053331830249720584}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  OutputAudioMixerGroup: {fileID: 8808991860972046979, guid: b1bb5b3da571d8b4b86148a6e0951299, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 55c08f70e4f7b39448a57393f7c785ef, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -212,8 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorFade: {fileID: 0}
-  open: {fileID: 0}
-  close: {fileID: 0}
   mr: {fileID: 2100000, guid: 654f432608a2b5e44b1333aa0ceaec7f, type: 2}
   ZeroIntensity: 0
   OneIntensity: 1
