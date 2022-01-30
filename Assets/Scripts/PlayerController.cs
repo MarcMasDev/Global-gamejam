@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CanAttract())
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 MagArea.StartMagnetism();
                 _attracting = true;
@@ -170,11 +170,11 @@ public class PlayerController : MonoBehaviour
                 Pointer.ShowMinus();
                 LPF.ModifiyPassFilter();
             }
-            else if (Input.GetKey(KeyCode.Mouse0))
+            else if (Input.GetKey(KeyCode.Mouse1))
             {
                 Head.transform.LookAt(Target.transform);
             }
-            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            else if (Input.GetKeyUp(KeyCode.Mouse1))
             {
                 MagArea.EndMagnetism();
                 _attracting = false;
@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CanEject())
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 HeadMag.StartRejectism();
                 _ejecting = true;
@@ -198,11 +198,11 @@ public class PlayerController : MonoBehaviour
                 Pointer.ShowPlus();
                 LPF.ModifiyPassFilter();
             }
-            else if (Input.GetKey(KeyCode.Mouse1))
+            else if (Input.GetKey(KeyCode.Mouse0))
             {
                 Head.transform.LookAt(Target.transform);
             }
-            else if (Input.GetKeyUp(KeyCode.Mouse1))
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 HeadMag.EndRejectism();
                 _ejecting = false;

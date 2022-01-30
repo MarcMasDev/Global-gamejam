@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 383619700419731083, guid: f0848241df7c10d4b83d6690d8f52375, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 744950341905582800, guid: f0848241df7c10d4b83d6690d8f52375, type: 3}
       propertyPath: LPF
       value: 
@@ -185,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 1357919459650675220, guid: f0848241df7c10d4b83d6690d8f52375, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276821010362263496, guid: f0848241df7c10d4b83d6690d8f52375, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0848241df7c10d4b83d6690d8f52375, type: 3}
@@ -4083,6 +4091,10 @@ PrefabInstance:
     - target: {fileID: 3810853689074959234, guid: 72fda1be502a9664780449935782779b, type: 3}
       propertyPath: m_Name
       value: cubo_energia_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810853689074959234, guid: 72fda1be502a9664780449935782779b, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4587214814505113912, guid: 72fda1be502a9664780449935782779b, type: 3}
       propertyPath: m_RootOrder
