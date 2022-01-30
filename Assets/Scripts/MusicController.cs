@@ -18,7 +18,7 @@ public class MusicController : MonoBehaviour
     }
     IEnumerator HighVolume()
     {
-        for (float i = 0; i < 1;)
+        for (float i = 0; i < 0.7;)
         {
             yield return new WaitForSeconds(0.1f);
             i += 0.05f;
@@ -33,7 +33,7 @@ public class MusicController : MonoBehaviour
     IEnumerator LowVolume()
     {
         StopCoroutine(HighVolume());
-        for (float i = 1; i > 0;)
+        for (float i = 0.7f; i > 0;)
         {
             yield return new WaitForSeconds(0.1f);
             i -= 0.05f;

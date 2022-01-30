@@ -887,7 +887,7 @@ MonoBehaviour:
   YawRotationSpeedNormal: 180
   PitchRotationSpeedNormal: 180
   LookAtAiming: {fileID: 744950342811990063}
-  MinDistanceAiming: 2
+  MinDistanceAiming: 2.5
   MaxDistanceAiming: 3
   YawRotationSpeedAiming: 160
   PitchRotationSpeedAiming: 160
