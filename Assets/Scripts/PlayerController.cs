@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.GetManager().SetPlayer(this);
+        Head.transform.localRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
     }
 
     void Update()
@@ -180,7 +181,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 Pointer.Hide();
                 LPF.ResetPassFilter();
-                Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                Head.transform.localRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
             }
         }
     }
@@ -208,7 +209,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 Pointer.Hide();
                 LPF.ResetPassFilter();
-                Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                Head.transform.localRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
             }
         }
     }
