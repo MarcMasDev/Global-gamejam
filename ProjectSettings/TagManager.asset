@@ -10,6 +10,7 @@ TagManager:
   - Interactable
   - Head
   - MaxAtracted
+  - MagPlatform
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Player
   - Eject
   - Attach
-  - 
+  - Attract
   - 
   - 
   - 
