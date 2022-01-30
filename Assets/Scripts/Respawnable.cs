@@ -6,9 +6,10 @@ public class Respawnable : MonoBehaviour
 {
     protected Vector3 initialPosition;
     protected Quaternion initialRotation;
+    private Rigidbody _rigidbody;
     private void Start()
     {
-      
+        _rigidbody.GetComponent<Rigidbody>();
         SetPos();
     }
     public void SetPos()
@@ -31,5 +32,8 @@ public class Respawnable : MonoBehaviour
     {
         transform.position = initialPosition;
         transform.rotation = initialRotation;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+
     }
 }

@@ -20,4 +20,8 @@ public class PortalActivation : MonoBehaviour
     {
         _count += 1;
     }
+    public void Resta()
+    {
+        _count -= 1;
+    }
 }
