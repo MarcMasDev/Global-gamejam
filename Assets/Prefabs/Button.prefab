@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 8089225337598180965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.238, y: 0.0000009536743, z: 1.754}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1441, y: 1.1441, z: 1.1441}
   m_Children:
   - {fileID: 7016203592851692653}
   - {fileID: 3318509459434511127}
@@ -256,10 +256,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FadeCollider, Assembly-CSharp
+        m_MethodName: OpenPortal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ReleaseEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FadeCollider, Assembly-CSharp
+        m_MethodName: ClosePortal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &-8602186473438851097
 Animator:
   serializedVersion: 3
