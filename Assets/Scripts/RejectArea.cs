@@ -103,12 +103,18 @@ public class RejectArea : MonoBehaviour
             eject.gameObject.SetActive(true);
             eject.Play();
             ActionController.SetRejectTrigger();
-            Reject();
+        
         
        
     }
+
+    public void RejectUp()
+    {
+        
+    }
     public void EndRejectism()
     {
+        Reject();
         Head.enabled = true;
         ActionController.OffRejectTrigger();
         eject.Stop();
