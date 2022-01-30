@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class FadeCollider : MonoBehaviour
 {
     public Animator AnimatorFade;
+    private bool _open;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            AnimatorFade.SetTrigger("Exit");
+            if (_open)
+            {
+                AnimatorFade.SetTrigger("Exit");
+                other.GetComponent<CharacterController>().enabled = false;
+            }
         }
     }
     private void Update()
@@ -78,11 +83,13 @@ public class FadeCollider : MonoBehaviour
     public void OpenPortal()
     {
         StartCoroutine(DelayIntesity());
+        _open = true;
     }
 
     public void ClosePortal()
     {
         StopAllCoroutines();
         StartCoroutine(RemoveIntensity());
+        _open = false;
     }
 }
