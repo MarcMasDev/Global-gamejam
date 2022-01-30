@@ -77,6 +77,7 @@ public class RejectArea : MonoBehaviour
         {
             //if (!ObjectsAttached.Contains(other.gameObject))
             //{
+            print(other.name);
                 Rigidbody og = other.GetComponent<Rigidbody>();
                 DistanceImpact = Vector3.Distance(other.transform.position, transform.position);
                 DistanceImpact = Mathf.Clamp(DistanceImpact, 0, MaxDistanceImpact);
