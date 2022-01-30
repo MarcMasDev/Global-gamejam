@@ -14,18 +14,19 @@ public class PlayerController : MonoBehaviour
     public float JumpSpeed;
     public float AimingSpeed;
     public float BlendMovement;
-    public Image Image;
     public RejectArea HeadMag;
     public AtractArea MagArea;
     public float DotActivateMagPlatform;
-    public MultiAimConstraint AimConstraint;
+    public GameObject Head;
+    public Pointer Pointer;
+    public GameObject Target;
 
     private Vector3 _movementAxis;
     private Vector3 _movement;
     private float _verticalSpeed;
     private CharacterController _charController;
     private CameraController _camController;
-    private Animator _animator;
+    public Animator Animator;
     private GameObject _currentPlatform;
     private MagPlatformController _magPlatformController;
 
@@ -46,8 +47,6 @@ public class PlayerController : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _charController = GetComponent<CharacterController>();
         _camController = Cam.GetComponent<CameraController>();
-        _animator = GetComponent<Animator>();
-        Image.enabled = false;
     }
     private void Start()
     {
@@ -60,13 +59,6 @@ public class PlayerController : MonoBehaviour
 
         if (_movementAxis != Vector3.zero)
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_movementAxis), LerpRotationPercentatge * Time.deltaTime);
-
-        if (_attracting || _ejecting)
-        {
-            AimConstraint.weight = 1;
-        }
-        else
-            AimConstraint.weight = 0;
 
         Speed();
 
@@ -135,7 +127,7 @@ public class PlayerController : MonoBehaviour
             speed = AimingSpeed;
         }
 
-        _animator.SetFloat("Speed", _speedAnimator); 
+        Animator.SetFloat("Speed", _speedAnimator); 
 
         _movement = _movementAxis * speed * Time.deltaTime;
     }
@@ -150,13 +142,13 @@ public class PlayerController : MonoBehaviour
         if ((collisionFlags & CollisionFlags.Below) != 0)
         {
             _onGround = true;
-            _animator.SetBool("OnGround", true);
+            Animator.SetBool("OnGround", true);
         }
         else if ((collisionFlags & CollisionFlags.Below) == 0)
         {
             _verticalSpeed += Physics.gravity.y * Time.deltaTime;
             _onGround = false;
-            _animator.SetBool("OnGround", false);
+            Animator.SetBool("OnGround", false);
             //animator
         }
 
@@ -174,24 +166,21 @@ public class PlayerController : MonoBehaviour
                 MagArea.StartMagnetism();
                 _attracting = true;
                 _camController.Aiming(_attracting);
-                _animator.SetBool("Attracting", _attracting);
-                Image.enabled = true;
+                Pointer.ShowMinus();
                 LPF.ModifiyPassFilter();
-
             }
             else if (Input.GetKey(KeyCode.Mouse0))
             {
-
+                Head.transform.LookAt(Target.transform);
             }
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 MagArea.EndMagnetism();
                 _attracting = false;
                 _camController.Aiming(_attracting);
-                _animator.SetBool("Attracting", _attracting);
-                Image.enabled = false;
+                Pointer.Hide();
                 LPF.ResetPassFilter();
-                //Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
         }
     }
@@ -205,24 +194,21 @@ public class PlayerController : MonoBehaviour
                 HeadMag.StartRejectism();
                 _ejecting = true;
                 _camController.Aiming(_ejecting);
-                _animator.SetBool("Ejecting", _ejecting);
-                Image.enabled = true;
+                Pointer.ShowPlus();
                 LPF.ModifiyPassFilter();
-
             }
             else if (Input.GetKey(KeyCode.Mouse1))
             {
-
+                Head.transform.LookAt(Target.transform);
             }
             else if (Input.GetKeyUp(KeyCode.Mouse1))
             {
                 HeadMag.EndRejectism();
                 _ejecting = false;
                 _camController.Aiming(_ejecting);
-                _animator.SetBool("Ejecting", _ejecting);
-                Image.enabled = false;
+                Pointer.Hide();
                 LPF.ResetPassFilter();
-              //  Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
+                Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
         }
     }
@@ -235,7 +221,7 @@ public class PlayerController : MonoBehaviour
             _verticalSpeed = JumpSpeed;
         }
 
-        _animator.SetBool("Falling", _verticalSpeed < 0);
+        Animator.SetBool("Falling", _verticalSpeed < 0);
     }
 
     bool CanJump()

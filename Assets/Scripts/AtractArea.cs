@@ -15,6 +15,7 @@ public class AtractArea : MonoBehaviour
     public ParticleSystem Mangentism;
     public ActionController ActionController;
     private AudioSource _atractSound;
+    public Material shader;
     
     //private float timer;
     void Start()
@@ -34,6 +35,8 @@ public class AtractArea : MonoBehaviour
 
             if ((l_Pct >= 0.7 && l_Pct <= 1) && GameManager.GetManager().GetRejectArea().ObjectAttached == null)//!GameManager.GetManager().GetRejectArea().ObjectsAttached.Contains(other.gameObject))
             {
+                
+                Texture e = other.GetComponent<MeshRenderer>().materials[0].mainTexture;
                 other.transform.SetParent(RejectAreaParent);
                 //GameManager.GetManager().GetRejectArea().ObjectsAttached.Add(other.gameObject);
                 GameManager.GetManager().GetRejectArea().ObjectAttached = other.gameObject;
@@ -44,6 +47,9 @@ public class AtractArea : MonoBehaviour
                 {
                     other.gameObject.SetActive(false);
                     ObjectAttachedMesh.GetComponent<MeshFilter>().mesh = other.GetComponent<MeshFilter>().mesh;
+                    //ObjectAttachedMesh.GetComponent<MeshRen//SetTexture("Texture2D_e57cbf52cbeb4ccfbc1c157cfbe221ca", e);
+                    print(shader.GetTexture("Texture2D_e57cbf52cbeb4ccfbc1c157cfbe221ca"));
+                    shader.SetTexture("Texture2D_e57cbf52cbeb4ccfbc1c157cfbe221ca", e);
                 }
 
 

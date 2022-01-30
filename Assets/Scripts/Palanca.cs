@@ -13,6 +13,7 @@ public class Palanca : MonoBehaviour
     public UnityEvent OffEvent;
 
     private AudioSource _audioSource;
+    public AudioClip _onC, _offC;
     
     private void Start()
     {
@@ -75,8 +76,11 @@ public class Palanca : MonoBehaviour
         }
     }
 
-    public void Sound()
+    public void Sound(int a)
     {
-        _audioSource.PlayOneShot(_audioSource.clip);
+        if (a == 0)
+            _audioSource.PlayOneShot(_onC);
+        else
+            _audioSource.PlayOneShot(_offC);
     }
 }
