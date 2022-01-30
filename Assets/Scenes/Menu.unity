@@ -1475,15 +1475,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1735397006334729666, guid: 3d041f0ab748c1445aa7660d80bb42fe, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1735397006334729666, guid: 3d041f0ab748c1445aa7660d80bb42fe, type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1735397006334729666, guid: 3d041f0ab748c1445aa7660d80bb42fe, type: 3}
       propertyPath: m_BlocksRaycasts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1735397006334729676, guid: 3d041f0ab748c1445aa7660d80bb42fe, type: 3}
       propertyPath: m_Pivot.x
