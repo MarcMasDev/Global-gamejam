@@ -14,4 +14,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/fianl/FinalFinal/Level2.unity
     guid: 8426e2a6afdeec04b9d068b92f410632
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level3.unity
+    guid: a42fa9356c1266d40b5545266bc5511d
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level4.unity
+    guid: aa6eb87b0fa4fc844b4b540809fd5a88
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level5.unity
+    guid: 1a26504c141eb0d45829b1e3f47092dd
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level6.unity
+    guid: 1d3d47d52d44e9048a3e22fdc0e75b29
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level7.unity
+    guid: f673ccf31af804e4382e3a5a3b485ec6
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level8.unity
+    guid: ab397df710d70cf4f8149fc5abd4ad44
   m_configObjects: {}
