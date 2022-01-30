@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Palanca : MonoBehaviour
 {
     public float DotActivatePalanca;
-    public bool On;
+    public bool On=false;
     private Animator _animator;
     public UnityEvent OnEvent;
     public UnityEvent OffEvent;
@@ -22,17 +22,19 @@ public class Palanca : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other != null  && (other.CompareTag("Eject" )|| other.CompareTag("Attract")))
         {
+           
             Vector3 colliderForward = other.transform.forward;
             colliderForward.y = 0;
             colliderForward.Normalize();
             float dot = Vector3.Dot(colliderForward, transform.forward);
             if (dot > DotActivatePalanca)
             {
+               
                 if (On)
                 {
+                    
                     if (other.tag == "Eject")
                     {
                         _animator.SetTrigger("Off");
@@ -54,6 +56,7 @@ public class Palanca : MonoBehaviour
             }
             else if (dot < -DotActivatePalanca)
             {
+                print(other.name + "www");
                 if (On)
                 {
                     if (other.tag == "Attract")
