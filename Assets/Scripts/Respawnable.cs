@@ -6,15 +6,21 @@ public class Respawnable : MonoBehaviour
 {
     protected Vector3 initialPosition;
     protected Quaternion initialRotation;
-
     private void Start()
+    {
+      
+        SetPos();
+    }
+    public void SetPos()
     {
         initialPosition = transform.position;
         initialRotation = transform.rotation;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
+       
         if (other.tag == "FallZone")
         {
             Respawn();
