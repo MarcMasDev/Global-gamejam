@@ -10,6 +10,7 @@ public class Button : MonoBehaviour
     public UnityEvent ReleaseEvent;
     private bool _press;
     private Animator _animator;
+    private float _pressingCount;
 
     private AudioSource _audioSource;
   
@@ -23,19 +24,28 @@ public class Button : MonoBehaviour
     {
         if (other.GetComponent<Cube>() || other.GetComponent<PlayerController>())
         {
-            _audioSource.PlayOneShot(_audioSource.clip);
-            _press = true;
-            _animator.SetBool("Press", _press);
-            PressEvent.Invoke();
+            if (_pressingCount == 0)
+            {
+                _audioSource.PlayOneShot(_audioSource.clip);
+                _press = true;
+                _animator.SetBool("Press", _press);
+                PressEvent.Invoke();
+            }
+            _pressingCount += 1;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<Cube>() || other.GetComponent<PlayerController>())
         {
-            _press = false;
-            _animator.SetBool("Press", _press);
-            ReleaseEvent.Invoke();
+            if (_pressingCount == 1)
+            {
+                _press = false;
+                _animator.SetBool("Press", _press);
+                ReleaseEvent.Invoke();
+            }
+
+            _pressingCount -= 1;
         }
 
     }
