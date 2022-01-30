@@ -2597,6 +2597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorFade: {fileID: 1107563950394703212}
+  Open: 0
   mr: {fileID: 2100000, guid: 654f432608a2b5e44b1333aa0ceaec7f, type: 2}
   ZeroIntensity: 0
   OneIntensity: 1
@@ -2979,6 +2980,10 @@ PrefabInstance:
     - target: {fileID: 6053331830249720584, guid: 04920ff854ff6e040ad03c7d441651f4, type: 3}
       propertyPath: m_Name
       value: Portal_redondo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395297201649580370, guid: 04920ff854ff6e040ad03c7d441651f4, type: 3}
+      propertyPath: Open
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6395297201649580370, guid: 04920ff854ff6e040ad03c7d441651f4, type: 3}
       propertyPath: AnimatorFade

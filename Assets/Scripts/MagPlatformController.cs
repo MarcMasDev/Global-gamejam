@@ -6,6 +6,7 @@ public class MagPlatformController : MonoBehaviour
 {
     public Transform FrontPoint;
     public Transform BackPoint;
+    private Rigidbody rigidbody;
     public float DotActivateMagPlatform;
     private bool _moveF;
     private bool _moveB;
@@ -14,6 +15,7 @@ public class MagPlatformController : MonoBehaviour
 
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
     }
     public void MoveFront()
     {
@@ -25,12 +27,15 @@ public class MagPlatformController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
         Vector3 newPos = Vector3.zero;
         if (_moveF)
         {
             newPos = transform.position + transform.forward * speed * Time.deltaTime;
             if (Vector3.Distance(newPos, FrontPoint.position) > 0.1)
             {
+                Debug.Log(Vector3.Distance(newPos, FrontPoint.position));
                 transform.position = newPos;
             }
         }
@@ -49,6 +54,8 @@ public class MagPlatformController : MonoBehaviour
     {
         if (other.tag == "Player")
             _player = true;
+        if (other.tag == "Interactable")
+            other.transform.SetParent(transform);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -89,5 +96,7 @@ public class MagPlatformController : MonoBehaviour
     {
         if (other.tag == "Player")
             _player = false;
+        if (other.tag == "Interactable")
+            other.transform.SetParent(null);
     }
 }

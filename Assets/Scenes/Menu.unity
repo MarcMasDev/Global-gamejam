@@ -1804,6 +1804,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7292710555899091205, guid: acd7d066979cf934fa19804bf8b06f53, type: 3}
+      propertyPath: m_text
+      value: MAGNETIK
+      objectReference: {fileID: 0}
     - target: {fileID: 7292710555940433756, guid: acd7d066979cf934fa19804bf8b06f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

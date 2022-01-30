@@ -8,14 +8,15 @@ using UnityEngine.SceneManagement;
 public class FadeCollider : MonoBehaviour
 {
     public Animator AnimatorFade;
-    private bool _open;
+    public bool Open;
 
     private AudioSource _audioSource;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            if (_open)
+            if (Open)
             {
                 AnimatorFade.SetTrigger("Exit");
                 other.GetComponent<CharacterController>().enabled = false;
@@ -48,6 +49,10 @@ public class FadeCollider : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         //Particles
         VSF_Portal.SetActive(false);
+        if (Open)
+        {
+            OpenPortal();
+        }
     }
 
     //private void Debuggin()
@@ -93,7 +98,7 @@ public class FadeCollider : MonoBehaviour
     {
         
         StartCoroutine(DelayIntesity());
-        _open = true;
+        Open = true;
     }
 
     public void ClosePortal()
@@ -101,6 +106,6 @@ public class FadeCollider : MonoBehaviour
         
         StopAllCoroutines();
         StartCoroutine(RemoveIntensity());
-        _open = false;
+        Open = false;
     }
 }
