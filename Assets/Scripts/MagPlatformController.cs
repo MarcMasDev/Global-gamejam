@@ -9,6 +9,7 @@ public class MagPlatformController : MonoBehaviour
     public float DotActivateMagPlatform;
     private bool _moveF;
     private bool _moveB;
+    private bool _player;
     public float speed;
 
     private void Start()
@@ -25,7 +26,6 @@ public class MagPlatformController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 newPos = Vector3.zero;
-        Debug.Log(_moveB + " " + _moveF);
         if (_moveF)
         {
             newPos = transform.position + transform.forward * speed * Time.deltaTime;
@@ -45,36 +45,49 @@ public class MagPlatformController : MonoBehaviour
         _moveF = false;
         _moveB = false;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+            _player = true;
+    }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Eject" || other.tag == "Attract")
+        if (!_player)
         {
-            Vector3 colliderForward = other.transform.forward;
-            colliderForward.y = 0;
-            colliderForward.Normalize();
-            float dot = Vector3.Dot(colliderForward, transform.forward);
-            if (dot > DotActivateMagPlatform)
+            if (other.tag == "Eject" || other.tag == "Attract")
             {
-                if (other.tag == "Eject")
+                Vector3 colliderForward = other.transform.forward;
+                colliderForward.y = 0;
+                colliderForward.Normalize();
+                float dot = Vector3.Dot(colliderForward, transform.forward);
+                if (dot > DotActivateMagPlatform)
                 {
-                    _moveF = true;
+                    if (other.tag == "Eject")
+                    {
+                        _moveF = true;
+                    }
+                    else if (other.tag == "Attract")
+                    {
+                        _moveB = true;
+                    }
                 }
-                else if (other.tag == "Attract")
+                else if (dot < -DotActivateMagPlatform)
                 {
-                    _moveB = true;
-                }
-            }
-            else if (dot < -DotActivateMagPlatform)
-            {
-                if (other.tag == "Attract")
-                {
-                    _moveF = true;
-                }
-                if (other.tag == "Eject")
-                {
-                    _moveB = true;
+                    if (other.tag == "Attract")
+                    {
+                        _moveF = true;
+                    }
+                    if (other.tag == "Eject")
+                    {
+                        _moveB = true;
+                    }
                 }
             }
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+            _player = false;
     }
 }

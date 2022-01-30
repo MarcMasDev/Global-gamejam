@@ -67,7 +67,6 @@ public class AtractArea : MonoBehaviour
        
         Mangentism.gameObject.SetActive(true);
         Mangentism.Play();
-        print("A");
         //timer = 0;
         currentDuration = 0;
     }
