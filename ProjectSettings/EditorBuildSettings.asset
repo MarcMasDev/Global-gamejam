@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/fianl/FinalFinal/Level2.unity
     guid: 8426e2a6afdeec04b9d068b92f410632
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/LevelFinal.unity
+    guid: 3fc4a7a26363c1646b52d193033c6e87
+  - enabled: 1
+    path: Assets/Scenes/Levels/fianl/FinalFinal/LevelFinalCinematic.unity
+    guid: 6fb1049dc5570c6469696dfc9197bb8a
   m_configObjects: {}
