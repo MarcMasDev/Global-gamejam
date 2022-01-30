@@ -148,6 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1023983280926686043}
   - component: {fileID: 1023983280926686044}
+  - component: {fileID: 5824126385258697840}
   m_Layer: 0
   m_Name: FallZone
   m_TagString: FallZone
@@ -182,6 +183,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5824126385258697840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023983280926686045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e25ede234621e842855bf4a0b35134f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1083668605781676923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5070,7 +5083,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107563948504197100}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -5754,7 +5767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1107563949695169810
 Transform:
   m_ObjectHideFlags: 0
@@ -5762,8 +5775,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107563949695169815}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.5000003, y: 0.49999985, z: -0.49999973, w: 0.50000024}
+  m_LocalPosition: {x: 3.7, y: -0.87, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1107563949589447841}
@@ -5771,7 +5784,7 @@ Transform:
   - {fileID: 1107563948504197103}
   m_Father: {fileID: 7084742760888608166}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!33 &1107563949695169811
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5938,7 +5951,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107563949782843118}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -6200,8 +6213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagnetDuration: 1
   currentDuration: 0
-  Pos: {fileID: 0}
-  ObjectAttachedMesh: {fileID: 0}
+  Pos: {fileID: 3866661064540357526}
+  ObjectAttachedMesh: {fileID: 342349672003080849}
   RejectAreaParent: {fileID: 1409617457096244686}
   Mangentism: {fileID: 8817635252873032722}
   ActionController: {fileID: 7084742761482488368}
@@ -11117,7 +11130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4483886259162166384}
   m_LocalRotation: {x: -0, y: 0.51767755, z: -0, w: 0.8555758}
-  m_LocalPosition: {x: -0.027, y: 1.016, z: 0.381}
+  m_LocalPosition: {x: -0.125, y: 0.597, z: 0.328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8853167500046503263}
@@ -11447,13 +11460,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LookAtNormal: {fileID: 8853167499341315997}
-  MinDistanceNormal: 5.5
-  MaxDistanceNormal: 6.5
+  MinDistanceNormal: 2
+  MaxDistanceNormal: 3
   YawRotationSpeedNormal: 180
   PitchRotationSpeedNormal: 180
   LookAtAiming: {fileID: 8853167499341315997}
-  MinDistanceAiming: 5
-  MaxDistanceAiming: 5.5
+  MinDistanceAiming: 3
+  MaxDistanceAiming: 4
   YawRotationSpeedAiming: 160
   PitchRotationSpeedAiming: 160
   MinPitch: -60
@@ -11705,13 +11718,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eject: {fileID: 6282332095707611170}
-  Force: 1.6
+  Force: 0.7
   DistanceImpact: 0
   MaxDistanceImpact: 2
   ActionController: {fileID: 7084742761482488368}
   Head: {fileID: 8491740065574459704}
-  HeadPos: {fileID: 0}
-  ObjectAttachedMesh: {fileID: 0}
+  HeadPos: {fileID: 3866661064540357526}
+  ObjectAttachedMesh: {fileID: 342349672003080849}
   ObjectAttached: {fileID: 0}
 --- !u!65 &8491740065574459704
 BoxCollider:
@@ -11965,7 +11978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8853167500046503267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.02, y: 0.89, z: -3.63}
+  m_LocalPosition: {x: -9.25, y: 0, z: -0.02700001}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 8853167498446604577}
@@ -11989,12 +12002,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.1
-  m_Radius: 0.4
+  m_Radius: 0.31
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.16
+  m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.06, z: 0}
 --- !u!114 &8853167500046503266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12008,10 +12021,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 7084742761145633162}
-  WalkSpeed: 12
+  WalkSpeed: 3.5
   LerpRotationPercentatge: 10
-  JumpSpeed: 10
-  AimingSpeed: 5
+  JumpSpeed: 4
+  AimingSpeed: 2
   BlendMovement: 0.1
   Image: {fileID: 7084742760334606308}
   HeadMag: {fileID: 3243605977578045670}
