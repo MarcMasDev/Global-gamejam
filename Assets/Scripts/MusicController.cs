@@ -16,9 +16,6 @@ public class MusicController : MonoBehaviour
         _audioSource.volume = 0;
         StartCoroutine(HighVolume());
     }
-
-
-   
     IEnumerator HighVolume()
     {
         for (float i = 0; i < 1;)

@@ -11,6 +11,7 @@ public class RejectArea : MonoBehaviour
     public ActionController ActionController;
     public Collider Head;
 
+    private AudioSource RejectSound;
     public Transform HeadPos;
     public Transform ObjectAttachedMesh;
 
@@ -19,6 +20,7 @@ public class RejectArea : MonoBehaviour
 
     private void Start()
     {
+        RejectSound = GetComponent<AudioSource>();
         GameManager.GetManager().SetRejectarea(this);
     }
 
@@ -36,6 +38,7 @@ public class RejectArea : MonoBehaviour
         //Rigidbody rb = ObjectsAttached[0].GetComponent<Rigidbody>();
         if (ObjectAttached != null)
         {
+
             ObjectAttached.SetActive(true);
             ObjectAttachedMesh.gameObject.GetComponent<MeshFilter>().mesh = null;
             Rigidbody rb = ObjectAttached.GetComponent<Rigidbody>();
@@ -94,7 +97,7 @@ public class RejectArea : MonoBehaviour
         
         
             Head.enabled = false;
-            
+            RejectSound.PlayOneShot(RejectSound.clip);
             eject.gameObject.SetActive(true);
             eject.Play();
             ActionController.SetRejectTrigger();

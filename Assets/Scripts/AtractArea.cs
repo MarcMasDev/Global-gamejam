@@ -13,11 +13,13 @@ public class AtractArea : MonoBehaviour
     public Transform RejectAreaParent;
     public ParticleSystem Mangentism;
     public ActionController ActionController;
+    private AudioSource _atractSound;
     
     //private float timer;
     void Start()
     {
-        currentDuration = 0;
+        _atractSound = GetComponent<AudioSource>();
+           currentDuration = 0;
     }
 
     private void OnTriggerStay(Collider other)
@@ -64,7 +66,7 @@ public class AtractArea : MonoBehaviour
     public void StartMagnetism()
     {
         ActionController.SetMagenticTrigger();
-       
+        _atractSound.PlayOneShot(_atractSound.clip);
         Mangentism.gameObject.SetActive(true);
         Mangentism.Play();
         //timer = 0;
