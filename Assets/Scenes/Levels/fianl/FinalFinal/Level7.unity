@@ -1147,6 +1147,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1156985826 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6590911230787788603, guid: bc996ac1638e23d4baef86acaeb8595f, type: 3}
+  m_PrefabInstance: {fileID: 1870437828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1162046417 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1561428226, guid: bc996ac1638e23d4baef86acaeb8595f, type: 3}
@@ -3450,7 +3455,7 @@ PrefabInstance:
     - target: {fileID: 6395297201649580370, guid: 04920ff854ff6e040ad03c7d441651f4, type: 3}
       propertyPath: AnimatorFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1156985826}
     - target: {fileID: 6395297202216023513, guid: 04920ff854ff6e040ad03c7d441651f4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
