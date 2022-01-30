@@ -26,6 +26,7 @@ public class FadeCollider : MonoBehaviour
     {
         if (AnimatorFade.GetBool("Done"))
         {
+            _audioSource.PlayOneShot(_audioSource.clip);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
