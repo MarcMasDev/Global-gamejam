@@ -11,7 +11,6 @@ public class FadeCollider : MonoBehaviour
     private bool _open;
 
     private AudioSource _audioSource;
-    public AudioClip open, close;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -45,6 +44,7 @@ public class FadeCollider : MonoBehaviour
     private void Start()
     {
         mr.SetFloat("Vector1_564c2d8ba9384ad59570b221315de88d", ZeroIntensity);
+        _audioSource = GetComponent<AudioSource>();
         //Particles
         VSF_Portal.SetActive(false);
     }
@@ -65,6 +65,7 @@ public class FadeCollider : MonoBehaviour
     private IEnumerator DelayIntesity()
     {
         VSF_Portal.SetActive(true);
+        _audioSource.PlayOneShot(_audioSource.clip);
         for (float i = 0; i < OneIntensity;)
         {
             yield return new WaitForSeconds(0.2f);
@@ -77,23 +78,26 @@ public class FadeCollider : MonoBehaviour
     private IEnumerator RemoveIntensity()
     {
         VSF_Portal.SetActive(false);
+
+        _audioSource.PlayOneShot(_audioSource.clip);
         for (float i = OneIntensity; i > ZeroIntensity;)
         {
             yield return new WaitForSeconds(0.1f);
             i -= 0.2f;
             mr.SetFloat("Vector1_564c2d8ba9384ad59570b221315de88d", i);
         }
+       
     }
     public void OpenPortal()
     {
-        _audioSource.PlayOneShot(open);
+        
         StartCoroutine(DelayIntesity());
         _open = true;
     }
 
     public void ClosePortal()
     {
-        _audioSource.PlayOneShot(close);
+        
         StopAllCoroutines();
         StartCoroutine(RemoveIntensity());
         _open = false;
