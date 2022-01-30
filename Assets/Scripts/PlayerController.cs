@@ -35,8 +35,13 @@ public class PlayerController : MonoBehaviour
     private float _speedAnimator;
     private float _fallTiming=0;
 
+    private AudioSource _audioSource; 
+    public AudioClip Step1, Step2;
+    public AudioClip Jump1;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _charController = GetComponent<CharacterController>();
         _camController = Cam.GetComponent<CameraController>();
         _animator = GetComponent<Animator>();
@@ -312,4 +317,21 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, eulerAngles.y, 0.0f);
     }
 
+
+
+    //sounds.
+
+
+    public void StepSound(int e)
+    {
+        if (e == 0)
+            _audioSource.PlayOneShot(Step1);
+        else
+            _audioSource.PlayOneShot(Step2);
+    }
+
+    public void JumpSound()
+    {
+        _audioSource.PlayOneShot(Jump1);
+    }
 }
