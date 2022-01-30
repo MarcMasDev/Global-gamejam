@@ -17,15 +17,21 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.GetComponent<>)
-        _press = true;
-        _animator.SetBool("Press", _press);
-        PressEvent.Invoke();
+        if (other.GetComponent<Cube>() || other.GetComponent<PlayerController>())
+        {
+            _press = true;
+            _animator.SetBool("Press", _press);
+            PressEvent.Invoke();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        _press = false;
-        _animator.SetBool("Press", _press);
-        ReleaseEvent.Invoke();
+        if (other.GetComponent<Cube>() || other.GetComponent<PlayerController>())
+        {
+            _press = false;
+            _animator.SetBool("Press", _press);
+            ReleaseEvent.Invoke();
+        }
+
     }
 }

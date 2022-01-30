@@ -10,7 +10,6 @@ public class AtractArea : MonoBehaviour
 
     public Transform Pos;
     public Transform ObjectAttachedMesh;
-    public MeshFilter MeshFilterToCompare;
     public Transform RejectAreaParent;
     public ParticleSystem Mangentism;
     public ActionController ActionController;
