@@ -111,11 +111,13 @@ public class PlayerController : MonoBehaviour
 
         if (_movementAxis != Vector3.zero)
         {
-            _speedAnimator += BlendMovement;
+            //_speedAnimator += BlendMovement;
+            _speedAnimator = 1;
         }
         else
         {
-            _speedAnimator -= BlendMovement;
+            //_speedAnimator -= BlendMovement;
+            _speedAnimator = 0;
         }
 
         _movementAxis.Normalize();
