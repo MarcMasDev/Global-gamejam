@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AudioSource))]
 public class Palanca : MonoBehaviour
 {
     public float DotActivatePalanca;
@@ -11,13 +12,17 @@ public class Palanca : MonoBehaviour
     public UnityEvent OnEvent;
     public UnityEvent OffEvent;
 
+    private AudioSource _audioSource;
+    
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Eject" || other.tag == "Attract")
+        
+        if (other != null  && (other.CompareTag("Eject" )|| other.CompareTag("Attract")))
         {
             Vector3 colliderForward = other.transform.forward;
             colliderForward.y = 0;
@@ -31,7 +36,7 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("Off");
                         On = false;
-                        OffEvent.Invoke();
+                        OffEvent?.Invoke();
                     }
                 }
                 if (!On)
@@ -40,9 +45,11 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("On");
                         On = true;
-                        OnEvent.Invoke();
+                        OnEvent?.Invoke();
                     }
                 }
+
+               
             }
             else if (dot < -DotActivatePalanca)
             {
@@ -52,7 +59,7 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("Off");
                         On = false;
-                        OffEvent.Invoke();
+                        OffEvent?.Invoke();
                     }
                 }
                 if (!On)
@@ -61,10 +68,15 @@ public class Palanca : MonoBehaviour
                     {
                         _animator.SetTrigger("On");
                         On = true;
-                        OnEvent.Invoke();
+                        OnEvent?.Invoke();
                     }
                 }
             }
         }
+    }
+
+    public void Sound()
+    {
+        _audioSource.PlayOneShot(_audioSource.clip);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     public Camera Cam;
@@ -33,10 +34,16 @@ public class PlayerController : MonoBehaviour
     private bool _ejecting;
 
     private float _speedAnimator;
-    private float _fallTiming=0;
+
+    private AudioSource _audioSource; 
+    public AudioClip Step1, Step2;
+    public AudioClip Jump1;
+
+    public LowPassFilter LPF;
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _charController = GetComponent<CharacterController>();
         _camController = Cam.GetComponent<CameraController>();
         _animator = GetComponent<Animator>();
@@ -167,6 +174,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = true;
+                LPF.ModifiyPassFilter();
 
             }
             else if (Input.GetKey(KeyCode.Mouse0))
@@ -180,6 +188,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = false;
+                LPF.ResetPassFilter();
                 //Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
         }
@@ -196,6 +205,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = true;
+                LPF.ModifiyPassFilter();
 
             }
             else if (Input.GetKey(KeyCode.Mouse1))
@@ -209,6 +219,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = false;
+                LPF.ResetPassFilter();
               //  Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
             }
         }
@@ -312,4 +323,21 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, eulerAngles.y, 0.0f);
     }
 
+
+
+    //sounds.
+
+
+    public void StepSound(int e)
+    {
+        if (e == 0)
+            _audioSource.PlayOneShot(Step1);
+        else
+            _audioSource.PlayOneShot(Step2);
+    }
+
+    public void JumpSound()
+    {
+        _audioSource.PlayOneShot(Jump1);
+    }
 }

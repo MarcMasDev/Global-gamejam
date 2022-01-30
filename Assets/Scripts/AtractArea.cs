@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AtractArea : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -66,7 +67,7 @@ public class AtractArea : MonoBehaviour
     public void StartMagnetism()
     {
         ActionController.SetMagenticTrigger();
-        _atractSound.PlayOneShot(_atractSound.clip);
+       // _atractSound.PlayOneShot(_atractSound.clip);
         Mangentism.gameObject.SetActive(true);
         Mangentism.Play();
         //timer = 0;

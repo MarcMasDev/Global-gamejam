@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class FadeCollider : MonoBehaviour
 {
     public Animator AnimatorFade;
     private bool _open;
 
+    private AudioSource _audioSource;
+    public AudioClip open, close;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -82,12 +86,14 @@ public class FadeCollider : MonoBehaviour
     }
     public void OpenPortal()
     {
+        _audioSource.PlayOneShot(open);
         StartCoroutine(DelayIntesity());
         _open = true;
     }
 
     public void ClosePortal()
     {
+        _audioSource.PlayOneShot(close);
         StopAllCoroutines();
         StartCoroutine(RemoveIntensity());
         _open = false;

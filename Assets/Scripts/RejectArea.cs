@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class RejectArea : MonoBehaviour
 {
 
@@ -98,7 +99,7 @@ public class RejectArea : MonoBehaviour
         
         
             Head.enabled = false;
-            RejectSound.PlayOneShot(RejectSound.clip);
+           // RejectSound.PlayOneShot(RejectSound.clip);
             eject.gameObject.SetActive(true);
             eject.Play();
             ActionController.SetRejectTrigger();
