@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 383619700419731077}
   - component: {fileID: 6405604841172772066}
   - component: {fileID: 9119073804019254231}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HeadMagnet
   m_TagString: Eject
   m_Icon: {fileID: 0}
@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 1357919459650675220}
   m_Layer: 0
   m_Name: Player Dual
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4303,7 +4303,7 @@ GameObject:
   - component: {fileID: 3316255537720278740}
   - component: {fileID: 672815013991107418}
   - component: {fileID: 9119073804142473352}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: MagnetArea
   m_TagString: Attract
   m_Icon: {fileID: 0}
@@ -9743,7 +9743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8822411858310279089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17383, y: 0.12935, z: 1.2}
+  m_LocalPosition: {x: 0.037, y: 0.12935, z: 1.138}
   m_LocalScale: {x: 0.9409006, y: 0.7568957, z: 0.9051652}
   m_Children: []
   m_Father: {fileID: 2917141138006049082}
@@ -9756,7 +9756,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8822411858310279089}
-  m_Mesh: {fileID: -1550514412580984892, guid: 81c002ed3b79cca48b37e711d0c96ea6, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1608205811560917205
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9776,7 +9776,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6814c46e1cfe1bb47a3c0b7faa4b9b72, type: 2}
+  - {fileID: 2100000, guid: 449a63cbf59903f48a44ca553347136d, type: 2}
+  - {fileID: 2100000, guid: 1dfadfce59ff8e040af898a043dd8607, type: 2}
+  - {fileID: 2100000, guid: 37526cb8907d3154391976559393757c, type: 2}
+  - {fileID: 2100000, guid: 697f638dd7e66b842be23745eef46355, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

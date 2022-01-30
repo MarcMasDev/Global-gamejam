@@ -11,6 +11,7 @@ TagManager:
   - Head
   - MaxAtracted
   - MagPlatform
+  - Platform
   layers:
   - Default
   - TransparentFX
