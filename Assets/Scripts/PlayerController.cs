@@ -33,11 +33,12 @@ public class PlayerController : MonoBehaviour
     private bool _ejecting;
 
     private float _speedAnimator;
-    private float _fallTiming=0;
 
     private AudioSource _audioSource; 
     public AudioClip Step1, Step2;
     public AudioClip Jump1;
+
+    public LowPassFilter LPF;
 
     private void Awake()
     {
@@ -172,6 +173,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = true;
+                LPF.ModifiyPassFilter();
 
             }
             else if (Input.GetKey(KeyCode.Mouse0))
@@ -185,6 +187,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_attracting);
                 _animator.SetBool("Attracting", _attracting);
                 Image.enabled = false;
+                LPF.ResetPassFilter();
                 //Head.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
             }
         }
@@ -201,6 +204,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = true;
+                LPF.ModifiyPassFilter();
 
             }
             else if (Input.GetKey(KeyCode.Mouse1))
@@ -214,6 +218,7 @@ public class PlayerController : MonoBehaviour
                 _camController.Aiming(_ejecting);
                 _animator.SetBool("Ejecting", _ejecting);
                 Image.enabled = false;
+                LPF.ResetPassFilter();
               //  Head.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
             }
         }

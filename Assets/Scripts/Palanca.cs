@@ -11,8 +11,11 @@ public class Palanca : MonoBehaviour
     public UnityEvent OnEvent;
     public UnityEvent OffEvent;
 
+    private AudioSource _audioSource;
+    
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter(Collider other)
@@ -43,6 +46,8 @@ public class Palanca : MonoBehaviour
                         OnEvent.Invoke();
                     }
                 }
+
+               
             }
             else if (dot < -DotActivatePalanca)
             {
@@ -66,5 +71,10 @@ public class Palanca : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Sound()
+    {
+        _audioSource.PlayOneShot(_audioSource.clip);
     }
 }

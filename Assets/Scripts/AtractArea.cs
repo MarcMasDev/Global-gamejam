@@ -66,7 +66,7 @@ public class AtractArea : MonoBehaviour
     public void StartMagnetism()
     {
         ActionController.SetMagenticTrigger();
-        _atractSound.PlayOneShot(_atractSound.clip);
+       // _atractSound.PlayOneShot(_atractSound.clip);
         Mangentism.gameObject.SetActive(true);
         Mangentism.Play();
         //timer = 0;
