@@ -18,15 +18,16 @@ public class Respawnable : MonoBehaviour
     private void Update()
     {
         print(rb.velocity.magnitude);
-        if (rb.velocity.magnitude < 1)
-        {
-            Respawn();
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "FallZone")
+        {
+            Respawn();
+        }
+        if (other.CompareTag("Wall")&& (rb.velocity.magnitude < 1))
         {
             Respawn();
         }
