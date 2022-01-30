@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eject: {fileID: 2856706364379006864}
-  Force: 0.2
+  Force: 0.7
   DistanceImpact: 0
   MaxDistanceImpact: 2
   ActionController: {fileID: 1357919459195981186}
@@ -882,13 +882,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LookAtNormal: {fileID: 744950342811990063}
-  MinDistanceNormal: 3
-  MaxDistanceNormal: 4
+  MinDistanceNormal: 3.5
+  MaxDistanceNormal: 4.5
   YawRotationSpeedNormal: 180
   PitchRotationSpeedNormal: 180
   LookAtAiming: {fileID: 744950342811990063}
-  MinDistanceAiming: 2.5
-  MaxDistanceAiming: 3
+  MinDistanceAiming: 3
+  MaxDistanceAiming: 3.5
   YawRotationSpeedAiming: 160
   PitchRotationSpeedAiming: 160
   MinPitch: -60
