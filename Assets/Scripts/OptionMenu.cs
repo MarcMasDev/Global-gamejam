@@ -47,6 +47,7 @@ public class OptionMenu : MonoBehaviour
         ResolutionDropdown.AddOptions(options);
         ResolutionDropdown.value = currentResolutionIndex;
         ResolutionDropdown.RefreshShownValue();
+        SetResolution(currentResolutionIndex);
 
         SetMusicVolume();
         SetSFXVolume();

@@ -9,15 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 22eac00ca972de7469bba8be1f40f127
   - enabled: 1
-    path: Assets/Scenes/Levels/3 1.unity
-    guid: 2f907d86a1c43184291abb308d9b050e
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level1.unity
+    guid: b8b28ccc8a485d740a4fc919b4dd9c6d
   - enabled: 1
-    path: Assets/Scenes/na.unity
-    guid: cdb45d9ba133e6a48b6b995adbf4369f
-  - enabled: 1
-    path: Assets/Scenes/Ainoa/Ainoa_1.unity
-    guid: 59305bb0bbad38446a044a16e89367d2
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Levels/fianl/FinalFinal/Level2.unity
+    guid: 8426e2a6afdeec04b9d068b92f410632
   m_configObjects: {}
