@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -15,9 +16,8 @@ public class PlayerController : MonoBehaviour
     public Image Image;
     public RejectArea HeadMag;
     public AtractArea MagArea;
-    public Transform AimPoint;
-    public Transform Head;
     public float DotActivateMagPlatform;
+    public MultiAimConstraint AimConstraint;
 
     private Vector3 _movementAxis;
     private Vector3 _movement;
@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
         _camController = Cam.GetComponent<CameraController>();
         _animator = GetComponent<Animator>();
         Image.enabled = false;
-        Head.transform.forward = Vector3.up;
     }
     private void Start()
     {
@@ -57,10 +56,10 @@ public class PlayerController : MonoBehaviour
 
         if (_attracting || _ejecting)
         {
-            Head.LookAt(AimPoint);
+            AimConstraint.weight = 1;
         }
-        //else
-        //    Head.transform.forward = Vector3.up;
+        else
+            AimConstraint.weight = 0;
 
         Speed();
 
@@ -263,7 +262,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 colliderForward = other.transform.forward;
                 colliderForward.y = 0;
                 colliderForward.Normalize();
-                float dot = Vector3.Dot(colliderForward, Head.transform.forward);
+                float dot = Vector3.Dot(colliderForward, HeadMag.transform.forward);
                 if (dot > DotActivateMagPlatform)
                 {
                     if (_ejecting)
