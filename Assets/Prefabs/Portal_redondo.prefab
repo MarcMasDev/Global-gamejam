@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6053331830249720584}
-  m_LocalRotation: {x: 0.5000008, y: -0.49999925, z: 0.49999928, w: 0.5000007}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 2.429, y: 1.12, z: -7.6294403}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.11, y: 1.11, z: 1.11}
   m_Children:
   - {fileID: 6395297200433192828}
   - {fileID: 6395297202216023512}
@@ -124,7 +124,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 749.0156
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorFade: {fileID: 0}
-  mr: {fileID: 2100000, guid: 654f432608a2b5e44b1333aa0ceaec7f, type: 2}
+  mr: {fileID: 2100000, guid: 652f000bbfff30f47add0b24cc07cb30, type: 2}
   ZeroIntensity: 0
   OneIntensity: 1
   VSF_Portal: {fileID: 6395297202216023519}
@@ -847,7 +847,6 @@ GameObject:
   - component: {fileID: 7558760043774270740}
   - component: {fileID: 2371627900414603922}
   - component: {fileID: 6287457169737286522}
-  - component: {fileID: 3103100034408038488}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -918,17 +917,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3103100034408038488
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582457681117899076}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}

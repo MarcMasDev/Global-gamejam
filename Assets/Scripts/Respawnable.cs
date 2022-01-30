@@ -9,7 +9,7 @@ public class Respawnable : MonoBehaviour
     private Rigidbody _rigidbody;
     private void Start()
     {
-        _rigidbody.GetComponent<Rigidbody>();
+        _rigidbody = transform.GetComponent<Rigidbody>();
         SetPos();
     }
     public void SetPos()
