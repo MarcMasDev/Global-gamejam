@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     public Camera Cam;
